@@ -148,7 +148,7 @@ dependencies {
 
     // Required mods
     compileOnly fg.deobf("curse.maven:brewin-and-chewin-637808:6122270")
-    compileOnly fg.deobf("curse.maven:farmers-delight-398521:5962797")
+    implementation fg.deobf("curse.maven:farmers-delight-398521:5962797")
 
     // Optional mods
     compileOnly fg.deobf("curse.maven:cultural-delights-574622:6029441")
