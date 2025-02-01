@@ -1,8 +1,12 @@
 plugins {
     id 'eclipse'
     id 'idea'
-    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+' // Add this line
 }
+
+
 
 
 group = mod_group_id
@@ -30,7 +34,7 @@ minecraft {
     //
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: mapping_channel, version: mapping_version
+    mappings channel: 'official', version: '1.20.1'
 
     // When true, this property will have all Eclipse/IntelliJ IDEA run configurations run the "prepareX" task for the given run configuration before launching the game.
     // In most cases, it is not necessary to enable.
@@ -144,11 +148,11 @@ dependencies {
     // The "userdev" classifier will be requested and setup by ForgeGradle.
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "net.minecraftforge:forge:1.20.1-47.3.0"
 
     // Required mods
     compileOnly fg.deobf("curse.maven:brewin-and-chewin-637808:6122270")
-    implementation fg.deobf("curse.maven:farmers-delight-398521:5962797")
+    implementation fg.deobf("curse.maven:farmers-delight-398521:5878214")
 
     // Optional mods
     compileOnly fg.deobf("curse.maven:cultural-delights-574622:6029441")
@@ -156,6 +160,8 @@ dependencies {
     compileOnly fg.deobf("curse.maven:collectors-reap-807101:6124041")
     compileOnly fg.deobf("curse.maven:farmers-respite-551453:5543547")
     compileOnly fg.deobf("curse.maven:delightful-637529:6066815")
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor' // Add this line
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -172,6 +178,11 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+}
+
+// And lastly, add this
+mixin {
+    // This can be empty
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -211,3 +222,4 @@ tasks.named('jar', Jar).configure {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+
