@@ -62,6 +62,8 @@ public class Brewincompatdelight {
     public Brewincompatdelight() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        BCDItems.register(modEventBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 

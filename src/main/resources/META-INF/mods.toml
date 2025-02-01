@@ -26,7 +26,7 @@ side = "BOTH"
 
 [[dependencies.brewincompatdelight]]
 modId = "farmersdelight"
-mandatory = true
+mandatory = false
 versionRange = "[1.2.3,)"
 ordering = "NONE"
 side = "BOTH"

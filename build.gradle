@@ -106,6 +106,7 @@ minecraft {
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
+
     }
 }
 
@@ -146,8 +147,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     // Required mods
-    implementation fg.deobf("curse.maven:brewin-and-chewin-637808:6122270")
-    implementation fg.deobf("curse.maven:farmers-delight-398521:5962797")
+    compileOnly fg.deobf("curse.maven:brewin-and-chewin-637808:6122270")
+    compileOnly fg.deobf("curse.maven:farmers-delight-398521:5962797")
 
     // Optional mods
     compileOnly fg.deobf("curse.maven:cultural-delights-574622:6029441")
