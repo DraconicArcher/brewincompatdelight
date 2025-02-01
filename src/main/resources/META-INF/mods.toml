@@ -1,0 +1,39 @@
+modLoader = "javafml"
+license = "All Rights Reserved"
+loaderVersion = "[47,)"
+
+[[mods]]
+modId = "brewincompatdelight"
+version = "0.0.1"
+displayName = "Brewin Compat Delight"
+authors = "DraconicArcher"
+credits = "DraconicArcher"
+description = "Adds compatability  by adding drinks to Brewin and Chewin from other addons."
+
+[[dependencies.brewincompatdelight]]
+modId = "forge"
+mandatory = true
+versionRange = "[47.3.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.brewincompatdelight]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,1.20.1]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.brewincompatdelight]]
+modId = "farmersdelight"
+mandatory = true
+versionRange = "[1.2.3,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.brewincompatdelight]]
+modId = "farmersrespite"
+mandatory = false
+versionRange = "[1.20.1-2.1,)"
+ordering = "NONE"
+side = "BOTH"
