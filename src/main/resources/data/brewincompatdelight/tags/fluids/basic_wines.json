@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "brewincompatdelight:peach_wine",
+      "required": false
+    },
+	{
+      "id": "brewincompatdelight:white_wine",
+      "required": false
+    },
+	{
+      "id": "brewincompatdelight:red_wine",
+      "required": false
+    },
+    {
+      "id": "brewincompatdelight:sweet_red_wine",
+      "required": false
+    }
+  ]
+}

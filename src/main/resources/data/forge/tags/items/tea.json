@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "farmersrespite:black_tea",
+      "required": false
+    },
+	{
+      "id": "farmersrespite:strong_black_tea",
+      "required": false
+    },
+	{
+      "id": "farmersrespite:long_black_tea",
+      "required": false
+    },
+	{
+      "id": "delightful:tea",
+      "required": false
+    },
+	{
+      "id": "farmersrespite:green_tea",
+      "required": false
+    },
+	{
+      "id": "farmersrespite:strong_green_tea",
+      "required": false
+    },
+	{
+      "id": "farmersrespite:long_green_tea",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "item.brewincompatdelight.moonshine": "Moonshine",
+  "item.brewincompatdelight.white_wine": "White Wine",
+  "item.brewincompatdelight.red_wine": "Red Wine",
+  "item.brewincompatdelight.sweet_red_wine": "Sweet Red Wine",
+  "item.brewincompatdelight.tequila": "Tequila!",
+  "item.brewincompatdelight.peach_wine": "Peach Wine",
+  "item.brewincompatdelight.mulled_wine": "Mulled Wine",
+  "item.brewincompatdelight.nut_brown_ale": "Nut Brown Ale",
+  "item.brewincompatdelight.screwdriver": "Screwdriver",
+  "item.brewincompatdelight.white_russian": "White Russian",
+  "item.brewincompatdelight.black_russian": "Black Russian",
+  "item.brewincompatdelight.half_and_half": "Half and Half",
+  "item.brewincompatdelight.hard_cider": "Hard Cider",
+  "item.brewincompatdelight.hard_lemonade": "Hard Lemonade",
+  "item.brewincompatdelight.lemon_lime": "Lemon Limeade",
+  "fluid_type.brewincompatdelight.moonshine_type": "Moonshine",
+  "fluid_type.brewincompatdelight.white_wine_type": "White Wine",
+  "fluid_type.brewincompatdelight.red_wine_type": "Red Wine",
+  "fluid_type.brewincompatdelight.sweet_red_wine_type": "Sweet Red Wine",
+  "fluid_type.brewincompatdelight.nut_brown_ale_type": "Nut Brown Ale",
+  "fluid_type.brewincompatdelight.peach_wine_type": "Peach Wine",
+  "fluid_type.brewincompatdelight.mulled_wine_type": "Mulled Wine",
+  "fluid_type.brewincompatdelight.tequila_type": "Tequila!",
+  "fluid_type.brewincompatdelight.hard_cider_type": "Hard Cider",
+  "fluid_type.brewincompatdelight.apple_cider_type": "Apple Cider",
+  "fluid_type.brewincompatdelight.hard_lemonade_type": "Hard Lemonade",
+  "fluid_type.brewincompatdelight.lemonade_type": "Lemonade",
+  "block.brewincompatdelight.strawberry_crate": "Strawberry Crate",
+  "block.brewincompatdelight.raspberry_crate": "Raspberry Crate",
+  "block.brewincompatdelight.blueberry_crate": "Blueberry Crate",
+  "block.brewincompatdelight.cherry_crate": "Cherry Crate",
+  "block.brewincompatdelight.green_grapes_crate": "Green Grapes Crate",
+  "block.brewincompatdelight.black_grapes_crate": "Black Grapes Crate",
+
+  "effect.brewincompatdelight.overdraw": "Overdraw",
+  "effect.brewincompatdelight.arrow_looting": "Arrow Looting",
+
+  "effect.brewincompatdelight.tooltip": "%s"
+
+  
+}

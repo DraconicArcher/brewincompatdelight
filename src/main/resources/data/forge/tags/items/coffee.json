@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "farmersrespite:coffee",
+      "required": false
+    },
+	{
+      "id": "farmersrespite:strong_coffee",
+      "required": false
+    },
+	{
+      "id": "farmersrespite:long_coffee",
+      "required": false
+    }
+  ]
+}

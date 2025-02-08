@@ -1,0 +1,30 @@
+{
+  "type":"forge:conditional",
+  "recipes":[
+    {
+      "conditions":[
+        {
+          "type": "forge:mod_loaded",
+          "modid": "berries_and_cherries"
+        }
+      ],
+      "recipe":{
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "###",
+          "###",
+          "###"
+        ],
+        "key": {
+          "#": {
+            "item": "berries_and_cherries:strawberry"
+          }
+        },
+        "result": {
+          "item": "brewincompatdelight:strawberry_crate"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:coffee"
+               }
+            }
+         ],
+         "recipe":{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "tag":"forge:coffee"
+               },
+               {
+                  "item":"brewinandchewin:vodka"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:black_russian",
+               "count":2
+            }
+         }
+      }
+   ]
+}

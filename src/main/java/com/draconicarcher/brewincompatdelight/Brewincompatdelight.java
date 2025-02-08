@@ -1,18 +1,21 @@
 package com.draconicarcher.brewincompatdelight;
 
+import com.draconicarcher.brewincompatdelight.items.BCDFluids;
+import com.draconicarcher.brewincompatdelight.blocks.BCDBlocks;
 import com.draconicarcher.brewincompatdelight.items.BCDItems;
+import com.draconicarcher.brewincompatdelight.items.BCDFood;
+import com.draconicarcher.brewincompatdelight.recipes.NoBottleReturnRecipe;
+import com.draconicarcher.brewincompatdelight.registries.BCDModEffects;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -29,94 +32,119 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
-import org.spongepowered.asm.mixin.MixinEnvironment;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(Brewincompatdelight.MODID)
 public class Brewincompatdelight {
 
-    // Define mod id in a common place for everything to reference
     public static final String MODID = "brewincompatdelight";
-    // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "brewincompatdelight" namespace
+    public static final Logger LOGGER = LogUtils.getLogger();
+
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "brewincompatdelight" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "brewincompatdelight" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, MODID);
+    public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MODID);
 
-    // Creates a new Block with the id "brewincompatdelight:example_block", combining the namespace and path
-    public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-    // Creates a new BlockItem with the id "brewincompatdelight:example_block", combining the namespace and path
-    public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<RecipeType<NoBottleReturnRecipe>> NO_BOTTLE_RETURN_TYPE = RECIPE_TYPES.register("no_bottle_return",
+            () -> new RecipeType<NoBottleReturnRecipe>() {
+                @Override
+                public String toString() {
+                    return "brewincompatdelight:no_bottle_return";
+                }
+            });
 
-    // Creates a new food item with the id "brewincompatdelight:example_id", nutrition 1 and saturation 2
-    public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().nutrition(1).saturationMod(2f).build())));
+    public static final RegistryObject<RecipeSerializer<NoBottleReturnRecipe>> NO_BOTTLE_RETURN_RECIPE = SERIALIZERS.register("no_bottle_return", NoBottleReturnRecipe.Serializer::new);
 
-    // Creates a creative tab with the id "brewincompatdelight:example_tab" for the example item, that is placed after the combat tab
-    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder().withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> EXAMPLE_ITEM.get().getDefaultInstance()).displayItems((parameters, output) -> {
-        output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
-    }).build());
+    public static RecipeType<NoBottleReturnRecipe> getNoBottleReturnRecipeType() {
+        return NO_BOTTLE_RETURN_TYPE.get();
+    }
+
+    public static RecipeSerializer<NoBottleReturnRecipe> getNoBottleReturnRecipeSerializer() {
+        return NO_BOTTLE_RETURN_RECIPE.get();
+
+    }
 
     public Brewincompatdelight() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        // 1. Register ALL DeferredRegisters FIRST - ORDER MATTERS!
+        BCDFluids.register(modEventBus);     // Fluids MUST be registered first
+        BCDModEffects.register(modEventBus); // Or BCDModEffects if that's the correct name
         BCDItems.register(modEventBus);
-
-        // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
-
-        // Register the Deferred Register to the mod event bus so blocks get registered
+        BCDBlocks.register(modEventBus);
         BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
+        RECIPE_TYPES.register(modEventBus);
+        SERIALIZERS.register(modEventBus);
 
-        // Register ourselves for server and other game events we are interested in
+
+
+        BCDFood.initialize();
+        BCDItems.initialize();
+
+        modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
 
         if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(EXAMPLE_BLOCK_ITEM);
-        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) event.accept(BCDItems.MOONSHINE);
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            addItemToTab(event, BCDItems.MOONSHINE);
+            addItemToTab(event, BCDItems.WHITE_WINE);
+            addItemToTab(event, BCDItems.RED_WINE);
+            addItemToTab(event, BCDItems.SWEET_RED_WINE);
+            addItemToTab(event, BCDItems.HALF_AND_HALF);
+            addItemToTab(event, BCDItems.BLACK_RUSSIAN);
+            addItemToTab(event, BCDItems.WHITE_RUSSIAN);
+            addItemToTab(event, BCDItems.SCREWDRIVER);
+            addItemToTab(event, BCDItems.TEQUILA);
+            addItemToTab(event, BCDItems.MULLED_WINE);
+            addItemToTab(event, BCDItems.PEACH_WINE);
+            addItemToTab(event, BCDItems.NUT_BROWN_ALE);
+            addItemToTab(event, BCDItems.LEMON_LIME);
+            addItemToTab(event, BCDItems.HARD_CIDER);
+            addItemToTab(event, BCDItems.HARD_LEMONADE);
+        }
+
+
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) { // Or your custom tab
+            event.accept(BCDBlocks.STRAWBERRY_CRATE.get().asItem()); // Add the block item
+            event.accept(BCDBlocks.RASPBERRY_CRATE.get().asItem());
+            event.accept(BCDBlocks.BLUEBERRY_CRATE.get().asItem());
+            event.accept(BCDBlocks.CHERRY_CRATE.get().asItem());
+            event.accept(BCDBlocks.GREEN_GRAPES_CRATE.get().asItem()); // Add the block item
+            event.accept(BCDBlocks.BLACK_GRAPES_CRATE.get().asItem());
+        }
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    private void addItemToTab(BuildCreativeModeTabContentsEvent event, RegistryObject<Item> item) {
+        if (item != null && item.get() != null) {
+            event.accept(item.get());
+        }
+    }
+
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
 
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }

@@ -1,0 +1,10 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 250,
+  "filling": true,
+  "fluid": "brewincompatdelight:red_wine",
+  "output": {
+    "item": "brewincompatdelight:red_wine"
+  },
+  "strict": false
+}

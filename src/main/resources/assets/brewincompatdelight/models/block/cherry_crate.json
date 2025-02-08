@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "brewincompatdelight:block/crate_bottom",
+    "side": "brewincompatdelight:block/cherry_crate_side",
+    "top": "brewincompatdelight:block/cherry_crate_top"
+  }
+}

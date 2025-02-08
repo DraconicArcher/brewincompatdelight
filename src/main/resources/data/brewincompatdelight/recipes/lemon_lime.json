@@ -1,0 +1,32 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type": "forge:mod_loaded",
+               "modid": "collectorsreap"
+            },
+            {
+               "type": "forge:mod_loaded",
+               "modid": "fruitsdelight"
+            }
+         ],
+         "recipe":{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "item":"collectorsreap:limeade"
+               },
+               {
+                  "item":"fruitsdelight:lemon_juice"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:lemon_lime",
+               "count":2
+            }
+         }
+      }
+   ]
+}
