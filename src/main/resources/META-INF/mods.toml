@@ -4,7 +4,7 @@ loaderVersion = "[47,)"
 
 [[mods]]
 modId = "brewincompatdelight"
-version = "0.0.1"
+version = "1.0.3"
 displayName = "Brewin Compat Delight"
 authors = "DraconicArcher"
 credits = "DraconicArcher"
@@ -26,7 +26,14 @@ side = "BOTH"
 
 [[dependencies.brewincompatdelight]]
 modId = "farmersdelight"
-mandatory = false
+mandatory = true
 versionRange = "[1.2.3,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.brewincompatdelight]]
+modId = "fruitsdelight"
+mandatory = true
+versionRange = "[1.0.16,)"
 ordering = "NONE"
 side = "BOTH"

@@ -4,6 +4,7 @@ import com.draconicarcher.brewincompatdelight.Brewincompatdelight;
 import com.draconicarcher.brewincompatdelight.registries.BCDModEffects;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -19,21 +20,18 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Brewincompatdelight.MODID)
 public class ProjectileDamageEvent {
 
-    // Define a tag for ranged weapons
-    private static final TagKey<Item> RANGED_WEAPONS_TAG = ItemTags.create(new ResourceLocation("brewincompatdelight", "ranged_weapons"));
+    private static final TagKey<Item> BOWS_TAG = ItemTags.create(new ResourceLocation("forge", "tools/bows"));
+    private static final TagKey<Item> CROSSBOWS_TAG = ItemTags.create(new ResourceLocation("forge", "tools/crossbows"));
+    private static final TagKey<Item> C_BOWS_TAG = ItemTags.create(new ResourceLocation("c", "tools/bow"));
+    private static final TagKey<Item> C_CROSSBOWS_TAG = ItemTags.create(new ResourceLocation("c", "tools/crossbow"));
 
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
-        // Get the direct entity causing the damage
         if (event.getSource().getDirectEntity() instanceof AbstractArrow arrow) {
-            // Check if the shooter is a player
             Entity shooter = arrow.getOwner();
             if (shooter instanceof ServerPlayer player) {
-                // Check if the player has the custom effect
                 if (player.hasEffect(BCDModEffects.PROJECTILE_DAMAGE.get())) {
                     int effectLevel = player.getEffect(BCDModEffects.PROJECTILE_DAMAGE.get()).getAmplifier() + 1;
-
-                    // Increase damage by 25% per effect level
                     event.setAmount(event.getAmount() * (1 + 0.25f * effectLevel));
                 }
             }
@@ -42,51 +40,49 @@ public class ProjectileDamageEvent {
 
     @SubscribeEvent
     public static void onArrowSpawn(EntityJoinLevelEvent event) {
-        // Check if the entity is an arrow
-        if (event.getEntity() instanceof AbstractArrow arrow) {
-            // Check if the shooter is a player
-            Entity shooter = arrow.getOwner();
-            if (shooter instanceof ServerPlayer player) {
-                // Check if the player has the PROJECTILE_DAMAGE effect
-                if (player.hasEffect(BCDModEffects.PROJECTILE_DAMAGE.get())) {
-                    int effectLevel = player.getEffect(BCDModEffects.PROJECTILE_DAMAGE.get()).getAmplifier() + 1;
+        if (event.getEntity() instanceof AbstractArrow arrow && arrow.getOwner() instanceof ServerPlayer player) { // Check for ServerPlayer
+            if (player.hasEffect(BCDModEffects.PROJECTILE_DAMAGE.get())) {
+                int effectLevel = player.getEffect(BCDModEffects.PROJECTILE_DAMAGE.get()).getAmplifier() + 1;
+                int damageAmount = effectLevel * 2;
 
-                    // Reduce the durability of the weapon
-                    damageWeapon(player, effectLevel * 2); // Durability loss scales with effect level
-                }
-            }
-        }
-    }
-
-    // Helper method to reduce weapon durability
-    private static void damageWeapon(ServerPlayer player, int damageAmount) {
-        ItemStack weapon = player.getUseItem();
-
-        // Check if the weapon is a ranged weapon
-        if (isRangedWeapon(weapon.getItem())) {
-            weapon.hurtAndBreak(damageAmount, player, (entity) -> {
-                entity.broadcastBreakEvent(player.getUsedItemHand());
-            });
-        } else {
-            // If not currently using (pulling back) the weapon, check main and off-hand
-            weapon = player.getMainHandItem();
-            if (isRangedWeapon(weapon.getItem())) {
-                weapon.hurtAndBreak(damageAmount, player, (entity) -> {
-                    entity.broadcastBreakEvent(player.getUsedItemHand());
-                });
-            } else {
-                weapon = player.getOffhandItem();
-                if (isRangedWeapon(weapon.getItem())) {
-                    weapon.hurtAndBreak(damageAmount, player, (entity) -> {
-                        entity.broadcastBreakEvent(player.getUsedItemHand());
+                // Schedule the damage on the server thread
+                if (player.getServer() != null) {
+                    player.getServer().execute(() -> { // Use server.execute
+                        damageWeapon(player, damageAmount);
                     });
                 }
             }
         }
     }
 
-    // Method to check if an item is a ranged weapon
+    private static void damageWeapon(Player player, int damageAmount) {
+        ItemStack weapon = player.getUseItem();
+        if (weapon.isEmpty() || !isRangedWeapon(weapon.getItem())) {
+            weapon = player.getMainHandItem();
+        }
+        if (weapon.isEmpty() || !isRangedWeapon(weapon.getItem())) {
+            weapon = player.getOffhandItem();
+        }
+
+        if (!weapon.isEmpty() && isRangedWeapon(weapon.getItem())) {
+            weapon.hurtAndBreak(damageAmount, player, (entity) -> {
+                entity.broadcastBreakEvent(player.getUsedItemHand());
+            });
+        }
+    }
+
     private static boolean isRangedWeapon(Item item) {
-        return item instanceof ProjectileWeaponItem;
+        if (item instanceof ProjectileWeaponItem) {
+            return true;
+        }
+
+        ItemStack stack = new ItemStack(item);
+
+        return stack.getTags().anyMatch(tag ->
+                tag.location().equals(BOWS_TAG.location()) ||
+                        tag.location().equals(CROSSBOWS_TAG.location()) ||
+                        tag.location().equals(C_BOWS_TAG.location()) ||
+                        tag.location().equals(C_CROSSBOWS_TAG.location())
+        );
     }
 }
