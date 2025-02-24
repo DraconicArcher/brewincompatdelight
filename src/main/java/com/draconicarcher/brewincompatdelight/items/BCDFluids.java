@@ -79,6 +79,11 @@ public class BCDFluids {
     public static RegistryObject<FlowingFluid> FLOWING_HARD_LEMONADE;
     public static Supplier<ForgeFlowingFluid.Properties> HARD_LEMONADE_FLUID_PROPERTIES;
 
+    public static RegistryObject<FluidType> RUM_FLUID_TYPE;
+    public static RegistryObject<FlowingFluid> RUM;
+    public static RegistryObject<FlowingFluid> FLOWING_RUM;
+    public static Supplier<ForgeFlowingFluid.Properties> RUM_FLUID_PROPERTIES;
+
 
     public static void register(IEventBus eventBus) {
             MOONSHINE_FLUID_TYPE = FLUID_TYPES.register("moonshine_type", () -> new AlcoholFluidType(-1573386));
@@ -142,6 +147,10 @@ public class BCDFluids {
         FLOWING_HARD_LEMONADE = FLUIDS.register("flowing_hard_lemonade", () -> new ForgeFlowingFluid.Flowing(HARD_LEMONADE_FLUID_PROPERTIES.get()));
         HARD_LEMONADE_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(HARD_LEMONADE_FLUID_TYPE, HARD_LEMONADE, FLOWING_HARD_LEMONADE);
 
+        RUM_FLUID_TYPE = FLUID_TYPES.register("rum_type", () -> new AlcoholFluidType(-1573388));
+        RUM = FLUIDS.register("rum", () -> new ForgeFlowingFluid.Source(RUM_FLUID_PROPERTIES.get()));
+        FLOWING_RUM = FLUIDS.register("flowing_rum", () -> new ForgeFlowingFluid.Flowing(RUM_FLUID_PROPERTIES.get()));
+        RUM_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(RUM_FLUID_TYPE, RUM, FLOWING_RUM);
 
         FLUID_TYPES.register(eventBus);
         FLUIDS.register(eventBus);

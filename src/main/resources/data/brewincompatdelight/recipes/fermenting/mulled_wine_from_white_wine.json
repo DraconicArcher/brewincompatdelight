@@ -4,8 +4,11 @@
       {
          "conditions":[
             {
-               "type":"forge:mod_loaded",
-               "modid":"aromatic"
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:cinnamon"
+               }
             }
          ],
          "recipe":{
@@ -24,7 +27,7 @@
                   "tag":"forge:berries"
                },
                {
-                  "item":"aromatic:dried_cinnamon"
+                  "tag":"forge:cinnamon"
                },
                {
                   "tag":"forge:seeds"

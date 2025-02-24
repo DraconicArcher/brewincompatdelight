@@ -1,9 +1,9 @@
 package com.draconicarcher.brewincompatdelight;
 
-import com.draconicarcher.brewincompatdelight.items.BCDFluids;
 import com.draconicarcher.brewincompatdelight.blocks.BCDBlocks;
-import com.draconicarcher.brewincompatdelight.items.BCDItems;
 import com.draconicarcher.brewincompatdelight.items.BCDFood;
+import com.draconicarcher.brewincompatdelight.items.BCDFluids;
+import com.draconicarcher.brewincompatdelight.items.BCDItems;
 import com.draconicarcher.brewincompatdelight.registries.BCDModEffects;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -44,36 +44,35 @@ public class Brewincompatdelight {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, MODID);
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MODID);
 
-
+    private final IEventBus modEventBus;
 
     public Brewincompatdelight() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        this.modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         BCDFluids.register(modEventBus);
         BCDModEffects.register(modEventBus);
 
-        // Register blocks using the correct BLOCKS register
+        ITEMS.register(modEventBus);
+        BCDItems.register(modEventBus);
         BLOCKS.register(modEventBus);
         BCDBlocks.register(modEventBus);
-        ITEMS.register(modEventBus);
-        BCDItems.register(modEventBus);  // Your items
+
         CREATIVE_MODE_TABS.register(modEventBus);
         RECIPE_TYPES.register(modEventBus);
         SERIALIZERS.register(modEventBus);
 
-
-        BCDFood.initialize();
         BCDItems.initialize();
-
+        BCDFood.initialize();
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+
+
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
 
@@ -84,32 +83,25 @@ public class Brewincompatdelight {
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            //Moonshine requires culturaldelights
             addItemToTab(event, BCDItems.MOONSHINE);
-            //White Wine and Red Wine require berries_and_cherries
             addItemToTab(event, BCDItems.WHITE_WINE);
             addItemToTab(event, BCDItems.RED_WINE);
             addItemToTab(event, BCDItems.SWEET_RED_WINE);
-            //Half and Half requires fruitsdelight and farmersrespite
             addItemToTab(event, BCDItems.HALF_AND_HALF);
-            //black Russian and White Russian require farmersrespite
             addItemToTab(event, BCDItems.BLACK_RUSSIAN);
             addItemToTab(event, BCDItems.WHITE_RUSSIAN);
-            //Screwdriver requires fruitsdelight
             addItemToTab(event, BCDItems.SCREWDRIVER);
             addItemToTab(event, BCDItems.TEQUILA);
-            //Mulled wine requires aromatic
             addItemToTab(event, BCDItems.MULLED_WINE);
-            //Peach Wine requires fruitsdelight
             addItemToTab(event, BCDItems.PEACH_WINE);
             addItemToTab(event, BCDItems.NUT_BROWN_ALE);
-            //lemon lime requires fruitsdelight and collectorsreap
             addItemToTab(event, BCDItems.LEMON_LIME);
             addItemToTab(event, BCDItems.HARD_CIDER);
-            //hard lemonade requires fruitsdelight
             addItemToTab(event, BCDItems.HARD_LEMONADE);
+            addItemToTab(event, BCDItems.RUM);
+            addItemToTab(event, BCDItems.MOJITO);
+            addItemToTab(event, BCDItems.PINA_COLADA);
         }
-
     }
 
     private void addItemToTab(BuildCreativeModeTabContentsEvent event, RegistryObject<Item> item) {

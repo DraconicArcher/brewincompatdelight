@@ -1,5 +1,6 @@
 package com.draconicarcher.brewincompatdelight.events;
 
+import com.draconicarcher.brewincompatdelight.registries.BCDEffectRegistry;
 import com.draconicarcher.brewincompatdelight.Brewincompatdelight;
 import com.draconicarcher.brewincompatdelight.registries.BCDModEffects;
 import net.minecraft.resources.ResourceLocation;
@@ -46,7 +47,7 @@ public class ArrowLootingHandler {
 
     @SubscribeEvent
     public static void onLootingLevel(LootingLevelEvent event) {
-        if (event.getDamageSource().getDirectEntity() instanceof AbstractArrow arrow && arrow.getOwner() instanceof ServerPlayer player) { // Check for ServerPlayer
+        if (event.getDamageSource() != null && event.getDamageSource().getDirectEntity() instanceof AbstractArrow arrow && arrow.getOwner() instanceof ServerPlayer player) {
             int lootingLevel = arrow.getPersistentData().getInt(ARROW_LOOTING_LEVEL_KEY);
             if (lootingLevel > 0) {
                 event.setLootingLevel(event.getLootingLevel() + lootingLevel);
@@ -54,10 +55,9 @@ public class ArrowLootingHandler {
                 if (arrow.getPersistentData().contains(WEAPON_DAMAGE_KEY)) {
                     int damageAmount = arrow.getPersistentData().getInt(WEAPON_DAMAGE_KEY);
 
-                    // Schedule the damage on the server thread
                     if (player.getServer() != null) {
-                        player.getServer().execute(() -> { // Use server.execute
-                            damageWeapon(player, damageAmount);
+                        player.getServer().execute(() -> {
+                            BCDEffectRegistry.applyArrowLootingEffect(player);
                         });
                     }
 
@@ -65,37 +65,5 @@ public class ArrowLootingHandler {
                 }
             }
         }
-    }
-
-
-    private static void damageWeapon(Player player, int damageAmount) {
-        ItemStack weapon = player.getUseItem();
-        if (weapon.isEmpty() || !isRangedWeapon(weapon.getItem())) {
-            weapon = player.getMainHandItem();
-        }
-        if (weapon.isEmpty() || !isRangedWeapon(weapon.getItem())) {
-            weapon = player.getOffhandItem();
-        }
-
-        if (!weapon.isEmpty() && isRangedWeapon(weapon.getItem())) {
-            weapon.hurtAndBreak(damageAmount, player, (entity) -> {
-                entity.broadcastBreakEvent(player.getUsedItemHand());
-            });
-        }
-    }
-
-    private static boolean isRangedWeapon(Item item) {
-        if (item instanceof ProjectileWeaponItem) {
-            return true;
-        }
-
-        ItemStack stack = new ItemStack(item);
-
-        return stack.getTags().anyMatch(tag ->
-                tag.location().equals(BOWS_TAG.location()) ||
-                        tag.location().equals(CROSSBOWS_TAG.location()) ||
-                        tag.location().equals(C_BOWS_TAG.location()) ||
-                        tag.location().equals(C_CROSSBOWS_TAG.location())
-        );
     }
 }
