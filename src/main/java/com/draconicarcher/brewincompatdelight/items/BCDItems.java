@@ -102,4 +102,3 @@ public class BCDItems {
         ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "brewincompatdelight");
     }
 }
-  

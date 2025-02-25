@@ -1,3 +1,4 @@
+
 package com.draconicarcher.brewincompatdelight;
 
 import com.draconicarcher.brewincompatdelight.blocks.BCDBlocks;

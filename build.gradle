@@ -286,7 +286,7 @@ dependencies {
 
 // Required mods
 
-    implementation fg.deobf("curse.maven:brewin-and-chewin-637808:6122270")
+    implementation fg.deobf("curse.maven:brewin-and-chewin-637808:6152169")
 
     implementation fg.deobf("curse.maven:farmers-delight-398521:5878214")
 
