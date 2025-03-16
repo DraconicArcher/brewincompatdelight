@@ -2,7 +2,7 @@
   "type": "brewinandchewin:keg_pouring",
   "amount": 250,
   "filling": true,
-  "fluid": "vegandelight:soymilk",
+  "fluid": "vegandelight:soymilk_fluid",
   "output": {
     "item": "vegandelight:soymilk_bottle"
   },

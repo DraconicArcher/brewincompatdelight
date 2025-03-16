@@ -4,8 +4,11 @@
       {
          "conditions":[
             {
-               "type":"forge:mod_loaded",
-               "modid":"fruitsdelight"
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:fruits/peach"
+               }
             }
          ],
          "recipe":{
@@ -18,10 +21,10 @@
             "fermentingtime":9600,
             "ingredients":[
                {
-                  "item":"fruitsdelight:peach"
+                  "tag":"forge:fruits/peach"
                },
                {
-                  "item":"fruitsdelight:peach"
+                  "tag":"forge:fruits/peach"
                },
                {
                   "item":"minecraft:sugar"

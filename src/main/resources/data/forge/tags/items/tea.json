@@ -13,8 +13,16 @@
       "id": "farmersrespite:long_black_tea",
       "required": false
     },
-	{
-      "id": "delightful:tea",
+    {
+      "id": "farmersrespite:yellow_tea",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:strong_yellow_tea",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:long_yellow_tea",
       "required": false
     },
 	{

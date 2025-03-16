@@ -7,7 +7,7 @@
                "type":"forge:not",
                "value":{
                   "type":"forge:tag_empty",
-                  "tag":"forge:green_grapes"
+                  "tag":"forge:black_grapes"
                }
             }
          ],

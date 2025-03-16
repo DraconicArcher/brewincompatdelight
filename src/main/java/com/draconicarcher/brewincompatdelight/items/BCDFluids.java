@@ -84,6 +84,16 @@ public class BCDFluids {
     public static RegistryObject<FlowingFluid> FLOWING_RUM;
     public static Supplier<ForgeFlowingFluid.Properties> RUM_FLUID_PROPERTIES;
 
+    public static RegistryObject<FluidType> KRAKEN_RUM_FLUID_TYPE;
+    public static RegistryObject<FlowingFluid> KRAKEN_RUM;
+    public static RegistryObject<FlowingFluid> FLOWING_KRAKEN_RUM;
+    public static Supplier<ForgeFlowingFluid.Properties> KRAKEN_RUM_FLUID_PROPERTIES;
+
+    public static RegistryObject<FluidType> WHISKEY_FLUID_TYPE;
+    public static RegistryObject<FlowingFluid> WHISKEY;
+    public static RegistryObject<FlowingFluid> FLOWING_WHISKEY;
+    public static Supplier<ForgeFlowingFluid.Properties> WHISKEY_FLUID_PROPERTIES;
+
 
     public static void register(IEventBus eventBus) {
             MOONSHINE_FLUID_TYPE = FLUID_TYPES.register("moonshine_type", () -> new AlcoholFluidType(-1573386));
@@ -151,6 +161,17 @@ public class BCDFluids {
         RUM = FLUIDS.register("rum", () -> new ForgeFlowingFluid.Source(RUM_FLUID_PROPERTIES.get()));
         FLOWING_RUM = FLUIDS.register("flowing_rum", () -> new ForgeFlowingFluid.Flowing(RUM_FLUID_PROPERTIES.get()));
         RUM_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(RUM_FLUID_TYPE, RUM, FLOWING_RUM);
+
+        KRAKEN_RUM_FLUID_TYPE = FLUID_TYPES.register("kraken_rum_type", () -> new AlcoholFluidType(-100000));
+        KRAKEN_RUM = FLUIDS.register("kraken_rum", () -> new ForgeFlowingFluid.Source(KRAKEN_RUM_FLUID_PROPERTIES.get()));
+        FLOWING_KRAKEN_RUM = FLUIDS.register("flowing_kraken_rum", () -> new ForgeFlowingFluid.Flowing(KRAKEN_RUM_FLUID_PROPERTIES.get()));
+        KRAKEN_RUM_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(KRAKEN_RUM_FLUID_TYPE, KRAKEN_RUM, FLOWING_KRAKEN_RUM);
+
+        WHISKEY_FLUID_TYPE = FLUID_TYPES.register("whiskey_type", () -> new AlcoholFluidType(-14242));
+        WHISKEY = FLUIDS.register("whiskey", () -> new ForgeFlowingFluid.Source(WHISKEY_FLUID_PROPERTIES.get()));
+        FLOWING_WHISKEY = FLUIDS.register("flowing_whiskey", () -> new ForgeFlowingFluid.Flowing(WHISKEY_FLUID_PROPERTIES.get()));
+        WHISKEY_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(WHISKEY_FLUID_TYPE, WHISKEY, FLOWING_WHISKEY);
+
 
         FLUID_TYPES.register(eventBus);
         FLUIDS.register(eventBus);

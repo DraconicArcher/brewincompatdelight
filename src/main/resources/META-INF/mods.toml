@@ -5,9 +5,9 @@ loaderVersion = "[47,)"
 [[mods]]
 modId = "brewincompatdelight"
 version = "1.0.3"
-displayName = "Brewin Compat Delight"
+displayName = "Cocktails Delight"
 authors = "DraconicArcher"
-credits = "DraconicArcher"
+credits = "DraconicArcher, Never, Pyreflies"
 description = "Adds compatability  by adding drinks to Brewin and Chewin from other addons."
 
 [[dependencies.brewincompatdelight]]
@@ -35,7 +35,7 @@ side = "BOTH"
 modId = "brewinandchewin"
 mandatory = true
 versionRange = "[1.20.1-3.1.2,)"
-ordering = "NONE"
+ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.brewincompatdelight]]

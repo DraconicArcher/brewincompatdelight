@@ -9,7 +9,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.FoodProperties.Builder;
 import net.minecraftforge.fml.ModList;
 import umpaz.brewinandchewin.common.registry.BnCEffects;
-import umpaz.farmersrespite.common.registry.FREffects; // Removed import to prevent direct access
+import umpaz.farmersrespite.common.registry.FREffects;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.function.Supplier;
@@ -17,6 +17,13 @@ import java.util.function.Supplier;
 public class BCDFood {
     public static final FoodProperties MOONSHINE = (new Builder()).effect(() -> {
         return new MobEffectInstance(BnCEffects.TIPSY.get(), 3600, 1);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 3000, 0);
+    }, 1.0F).alwaysEat().build();
+    public static final FoodProperties WHISKEY = (new Builder()).effect(() -> {
+        return new MobEffectInstance(BnCEffects.TIPSY.get(), 3600, 1);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(ModEffects.COMFORT.get(), 600, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 3000, 0);
     }, 1.0F).alwaysEat().build();
@@ -48,12 +55,20 @@ public class BCDFood {
         return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 1800, 0);
     }, 1.0F).alwaysEat().build();
 
+    public static final FoodProperties BOILERMAKER = (new Builder()).effect(() -> {
+        return new MobEffectInstance(BnCEffects.TIPSY.get(), 4000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(ModEffects.COMFORT.get(), 1200, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 3600, 0);
+    }, 1.0F).alwaysEat().build();
+
     public static final FoodProperties HALF_AND_HALF = createConditionalFood(
             (new Builder())
                     .effect(() -> ModList.get().isLoaded("farmersrespite") ? new MobEffectInstance(FREffects.CAFFEINATED.get(), 600, 0) : new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600, 0), 1.0F)
                     .effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), 600, 0), 1.0F)
                     .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0), 1.0F)
-                    .alwaysEat(),
+                    .nutrition(3).saturationMod(1).alwaysEat(),
             "farmersdelight"
     );
 
@@ -73,7 +88,7 @@ public class BCDFood {
             (new Builder()).effect(() -> new MobEffectInstance(BnCEffects.TIPSY.get(), 2400, 0), 1.0F)
                     .effect(() -> ModList.get().isLoaded("fruitsdelight") ? new MobEffectInstance(FDEffects.LEAF_PIERCING.get(), 600, 0) : new MobEffectInstance(MobEffects.LUCK, 600, 0), 1.0F)
                     .effect(() -> new MobEffectInstance(BnCEffects.INTOXICATION.get(), 1800, 0), 1.0F)
-                    .alwaysEat(),
+                    .nutrition(2).saturationMod(1).alwaysEat(),
             "fruitsdelight"
     );
     public static final FoodProperties TEQUILA = (new Builder()).effect(() -> {
@@ -112,7 +127,16 @@ public class BCDFood {
         return new MobEffectInstance(MobEffects.ABSORPTION, 600, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 900, 0);
-    }, 1.0F).alwaysEat().build();
+    }, 1.0F).nutrition(2).saturationMod(1).alwaysEat().build();
+
+    public static final FoodProperties TEQUILA_SUNRISE = (new Builder()).effect(() -> {
+        return new MobEffectInstance(BnCEffects.TIPSY.get(), 3600, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(MobEffects.REGENERATION, 600, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 2400, 0);
+    }, 1.0F).nutrition(2).saturationMod(1).alwaysEat().build();
+
 
     public static final FoodProperties RUM = (new Builder()).effect(() -> {
         return new MobEffectInstance(BnCEffects.TIPSY.get(), 1200, 1);
@@ -122,12 +146,37 @@ public class BCDFood {
         return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 1800, 0);
     }, 1.0F).alwaysEat().build();
 
+    public static final FoodProperties KRAKEN_RUM = (new Builder()).effect(() -> {
+        return new MobEffectInstance(BnCEffects.TIPSY.get(), 1200, 1);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(MobEffects.WATER_BREATHING, 1200, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 1800, 0);
+    }, 1.0F).alwaysEat().build();
+
     public static final FoodProperties MOJITO = createConditionalFood(
             (new Builder()).effect(() -> new MobEffectInstance(BnCEffects.TIPSY.get(), 1200, 0), 1.0F)
-                    .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 0), 1.0F)
-                    .effect(() -> ModList.get().isLoaded("collectorsreap") ? new MobEffectInstance(CREffects.CORROSION.get(), 300, 0) : new MobEffectInstance(MobEffects.POISON, 300, 0), 1.0F)
+                    .effect(() -> ModList.get().isLoaded("collectorsreap") ? new MobEffectInstance(CREffects.CORROSION.get(), 300, 0) : new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 0), 1.0F)
                     .effect(() -> new MobEffectInstance(BnCEffects.INTOXICATION.get(), 900, 0), 1.0F)
                     .alwaysEat(),
+            "collectorsreap"
+    );
+
+    public static final FoodProperties MARGARITA = createConditionalFood(
+            (new Builder()).effect(() -> new MobEffectInstance(BnCEffects.TIPSY.get(), 3600, 0), 1.0F)
+                    .effect(() -> ModList.get().isLoaded("collectorsreap") ? new MobEffectInstance(CREffects.CORROSION.get(), 1200, 0) : new MobEffectInstance(MobEffects.DAMAGE_BOOST, 3200, 0), 1.0F)
+                    .effect(() -> new MobEffectInstance(BnCEffects.INTOXICATION.get(), 2400, 0), 1.0F)
+                    .nutrition(2).saturationMod(1).alwaysEat(),
+            "collectorsreap"
+    );
+
+    public static final FoodProperties SALTED_MARGARITA = createConditionalFood(
+            (new Builder()).effect(() -> new MobEffectInstance(BnCEffects.TIPSY.get(), 3600, 0), 1.0F)
+                    .effect(() -> ModList.get().isLoaded("collectorsreap") ? new MobEffectInstance(CREffects.CORROSION.get(), 1800, 0) : new MobEffectInstance(MobEffects.DAMAGE_BOOST, 3200, 0), 1.0F)
+                    .effect(() -> new MobEffectInstance(BnCEffects.INTOXICATION.get(), 2400, 0), 1.0F)
+                    .nutrition(2).saturationMod(1).alwaysEat(),
             "collectorsreap"
     );
 
@@ -139,7 +188,7 @@ public class BCDFood {
         return new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 900, 0);
-    }, 1.0F).alwaysEat().build();
+    }, 1.0F).nutrition(2).saturationMod(1).alwaysEat().build();
 
     public static final FoodProperties HARD_LEMONADE = (new Builder()).effect(() -> {
         return new MobEffectInstance(BnCEffects.TIPSY.get(), 2400, 0);
@@ -147,12 +196,12 @@ public class BCDFood {
         return new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 1800, 0);
-    }, 1.0F).alwaysEat().build();
+    }, 1.0F).nutrition(2).saturationMod(1).alwaysEat().build();
 
     public static final FoodProperties LEMON_LIME = createConditionalFood(
             (new Builder()).effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0), 1.0F)
                     .effect(() -> ModList.get().isLoaded("collectorsreap") ? new MobEffectInstance(CREffects.CORROSION.get(), 1200, 0) : new MobEffectInstance(MobEffects.POISON, 1200, 0), 1.0F)
-                    .alwaysEat(),
+                    .nutrition(3).saturationMod(1).alwaysEat(),
             "collectorsreap"
     );
 

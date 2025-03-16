@@ -1,0 +1,15 @@
+{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "item":"brewinandchewin:beer"
+               },
+               {
+                  "item":"wrewincompatdelight:whiskey"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:half_and_half",
+               "count":2
+            }
+         }

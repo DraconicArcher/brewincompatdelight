@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import umpaz.brewinandchewin.common.item.BoozeItem;
+import umpaz.brewinandchewin.common.registry.BnCItems;
 
 @EventBusSubscriber(
         modid = "brewincompatdelight",
@@ -36,6 +37,12 @@ public class BCDItems {
     public static RegistryObject<Item> RUM;
     public static RegistryObject<Item> MOJITO;
     public static RegistryObject<Item> PINA_COLADA;
+    public static RegistryObject<Item> WHISKEY;
+    public static RegistryObject<Item> MARGARITA;
+    public static RegistryObject<Item> SALTED_MARGARITA;
+    public static RegistryObject<Item> BOILERMAKER;
+    public static RegistryObject<Item> TEQUILA_SUNRISE;
+    public static RegistryObject<Item> KRAKEN_RUM;
 
     public static void initialize() {
         WHITE_WINE = ITEMS.register("white_wine", () -> {
@@ -60,7 +67,7 @@ public class BCDItems {
             return new BoozeItem((Fluid)BCDFluids.MOONSHINE.get(), (new Properties()).stacksTo(64).craftRemainder(Items.GLASS_BOTTLE).food(BCDFood.MOONSHINE));
         });
         NUT_BROWN_ALE = ITEMS.register("nut_brown_ale", () -> {
-            return new BoozeItem((Fluid)BCDFluids.NUT_BROWN_ALE.get(), (new Properties()).stacksTo(64).craftRemainder(Items.GLASS_BOTTLE).food(BCDFood.NUT_BROWN_ALE));
+            return new BoozeItem((Fluid)BCDFluids.NUT_BROWN_ALE.get(), (new Properties()).stacksTo(64).craftRemainder(BnCItems.TANKARD.get()).food(BCDFood.NUT_BROWN_ALE));
         });
         HARD_CIDER = ITEMS.register("hard_cider", () -> {
             return new BoozeItem((Fluid)BCDFluids.HARD_CIDER.get(), (new Properties()).stacksTo(64).craftRemainder(Items.GLASS_BOTTLE).food(BCDFood.HARD_CIDER));
@@ -91,6 +98,25 @@ public class BCDItems {
         });
         PINA_COLADA = ITEMS.register("pina_colada", () -> {
             return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.PINA_COLADA));
+        });
+        WHISKEY = ITEMS.register("whiskey", () -> {
+            return new BoozeItem((Fluid)BCDFluids.WHISKEY.get(), (new Properties()).stacksTo(64).craftRemainder(Items.GLASS_BOTTLE).food(BCDFood.WHISKEY));
+        });
+
+        BOILERMAKER = ITEMS.register("boilermaker", () -> {
+            return new BCDDrinkableItemT((new Properties()).stacksTo(64).food(BCDFood.BOILERMAKER));
+        });
+        MARGARITA = ITEMS.register("margarita", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.MARGARITA));
+        });
+        SALTED_MARGARITA = ITEMS.register("salted_margarita", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.SALTED_MARGARITA));
+        });
+        TEQUILA_SUNRISE = ITEMS.register("tequila_sunrise", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.TEQUILA_SUNRISE));
+        });
+        KRAKEN_RUM = ITEMS.register("kraken_rum", () -> {
+            return new BoozeItem((Fluid)BCDFluids.KRAKEN_RUM.get(), (new Properties()).stacksTo(64).craftRemainder(BnCItems.TANKARD.get()).food(BCDFood.KRAKEN_RUM));
         });
     }
 

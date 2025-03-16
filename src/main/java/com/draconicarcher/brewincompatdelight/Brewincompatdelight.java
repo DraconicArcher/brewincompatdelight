@@ -102,6 +102,12 @@ public class Brewincompatdelight {
             addItemToTab(event, BCDItems.RUM);
             addItemToTab(event, BCDItems.MOJITO);
             addItemToTab(event, BCDItems.PINA_COLADA);
+            addItemToTab(event, BCDItems.WHISKEY);
+            addItemToTab(event, BCDItems.MARGARITA);
+            addItemToTab(event, BCDItems.SALTED_MARGARITA);
+            addItemToTab(event, BCDItems.BOILERMAKER);
+            addItemToTab(event, BCDItems.TEQUILA_SUNRISE);
+            addItemToTab(event, BCDItems.KRAKEN_RUM);
         }
     }
 
