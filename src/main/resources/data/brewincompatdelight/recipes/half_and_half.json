@@ -1,0 +1,35 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:tea"
+               }
+            },
+            {
+               "type": "forge:mod_loaded",
+               "modid": "fruitsdelight"
+            }
+         ],
+         "recipe":{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "item":"fruitsdelight:lemon_juice"
+               },
+               {
+                  "tag":"forge:tea"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:half_and_half",
+               "count":2
+            }
+         }
+      }
+   ]
+}

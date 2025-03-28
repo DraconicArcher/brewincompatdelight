@@ -1,0 +1,41 @@
+{
+  "type":"forge:conditional",
+  "recipes":[
+    {
+      "conditions":[
+        {
+          "type":"forge:not",
+          "value":{
+            "type":"forge:tag_empty",
+            "tag":"forge:coconut"
+          }
+        },
+        {
+          "type": "forge:mod_loaded",
+          "modid": "fruitsdelight"
+        }
+      ],
+      "recipe":{
+        "type":"minecraft:crafting_shapeless",
+        "ingredients":[
+          {
+            "tag":"forge:coconut"
+          },
+          {
+            "item":"brewincompatdelight:rum"
+          },
+          {
+            "item":"fruitsdelight:pineapple_slice"
+          },
+          {
+            "item":"fruitsdelight:pineapple_slice"
+          }
+        ],
+        "result":{
+          "item":"brewincompatdelight:pina_colada",
+          "count":2
+        }
+      }
+    }
+  ]
+}

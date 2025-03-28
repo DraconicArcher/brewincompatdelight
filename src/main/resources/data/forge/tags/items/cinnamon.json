@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "festive_delight:cinnamon_powder",
+      "required": false
+    },
+    {
+      "id": "aromatic:dried_cinnamon",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "values": [
+	  {
+	  "id": "berries_and_cherries:raspberry",
+	  "required": false
+ 	  },
+	  {
+		  "id": "berries_and_cherries:blueberry",
+		  "required": false
+	  },
+	  {
+		  "id": "berries_and_cherries:strawberry",
+		  "required": false
+	  }
+  ]
+}

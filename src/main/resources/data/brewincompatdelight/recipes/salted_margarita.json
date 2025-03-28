@@ -1,0 +1,37 @@
+{
+  "type":"forge:conditional",
+  "recipes":[
+    {
+      "conditions":[
+        {
+          "type":"forge:not",
+          "value":{
+            "type":"forge:tag_empty",
+            "tag":"forge:fruits/lime"
+          }
+        }
+      ],
+      "recipe":{
+        "type":"minecraft:crafting_shapeless",
+        "ingredients":[
+          {
+            "tag":"forge:fruits/lime"
+          },
+          {
+            "item":"brewincompatdelight:tequila"
+          },
+          {
+            "tag":"forge:fruits/lime"
+          },
+          {
+            "tag":"forge:salt"
+          }
+        ],
+        "result":{
+          "item":"brewincompatdelight:salted_margarita",
+          "count":1
+        }
+      }
+    }
+  ]
+}

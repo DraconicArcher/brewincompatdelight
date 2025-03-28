@@ -1,0 +1,34 @@
+{
+  "type":"forge:conditional",
+  "recipes":[
+    {
+      "conditions":[
+        {
+          "type":"forge:not",
+          "value":{
+            "type":"forge:tag_empty",
+            "tag":"forge:fruits/lime"
+          }
+        }
+      ],
+      "recipe":{
+        "type":"minecraft:crafting_shapeless",
+        "ingredients":[
+          {
+            "tag":"forge:fruits/lime"
+          },
+          {
+            "item":"brewincompatdelight:tequila"
+          },
+          {
+            "tag":"forge:fruits/lime"
+          }
+        ],
+        "result":{
+          "item":"brewincompatdelight:margarita",
+          "count":1
+        }
+      }
+    }
+  ]
+}

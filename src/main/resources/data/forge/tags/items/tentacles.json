@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "crabbersdelight:raw_squid_tentacles",
+      "required": false
+    },
+	{
+      "id": "crabbersdelight:raw_glow_squid_tentacles",
+      "required": false
+    },
+	{
+      "id": "alexsmobs:lost_tentacle",
+      "required": false
+    },
+    {
+      "id": "rusticdelight:calamari",
+      "required": false
+    },
+    {
+      "id": "culturaldelights:raw_calamari",
+      "required": false
+    }
+  ]
+}

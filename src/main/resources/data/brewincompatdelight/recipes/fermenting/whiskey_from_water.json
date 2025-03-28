@@ -1,0 +1,30 @@
+{
+
+      "type":"brewinandchewin:fermenting",
+      "basefluid":{
+         "count":1000,
+         "fluid":"minecraft:water"
+      },
+      "experience":1.0,
+      "fermentingtime":10800,
+      "ingredients":[
+         {
+            "item": "minecraft:wheat"
+         },
+         {
+            "item": "minecraft:wheat"
+         },
+         {
+            "item": "minecraft:brown_mushroom"
+         },
+         {
+            "item":"farmersdelight:straw"
+         }
+      ],
+      "recipe_book_tab":"drinks",
+      "result":{
+         "count":1000,
+         "fluid":"brewincompatdelight:whiskey"
+      },
+      "temperature":5
+   }

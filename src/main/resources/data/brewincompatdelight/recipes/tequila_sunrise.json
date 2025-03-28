@@ -1,0 +1,28 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type": "forge:mod_loaded",
+				"modid": "fruitsdelight"
+            }
+         ],
+         "recipe":{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "item":"brewincompatdelight:tequila"
+               },
+               {
+                  "item":"fruitsdelight:orange_juice"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:tequila_sunrise",
+               "count":2
+            }
+         }
+      }
+   ]
+}
