@@ -1,0 +1,39 @@
+
+
+
+{
+  "type":"forge:conditional",
+  "recipes":[
+    {
+      "conditions":[
+        {
+          "type": "forge:mod_loaded",
+          "modid": "vegandelight"
+        }
+      ],
+      "recipe":{
+        "type": "farmersdelight:cooking",
+        "cookingtime": 200,
+        "experience": 1.0,
+        "ingredients": [
+          {
+            "item": "vegandelight:soybean"
+          },
+          {
+            "item": "vegandelight:soybean"
+          },
+          {
+            "item": "vegandelight:soybean"
+          },
+          {
+            "tag": "forge:mushrooms"
+          }
+        ],
+        "recipe_book_tab": "meals",
+        "result": {
+          "item": "brewincompatdelight:soy_wax"
+        }
+      }
+    }
+  ]
+}

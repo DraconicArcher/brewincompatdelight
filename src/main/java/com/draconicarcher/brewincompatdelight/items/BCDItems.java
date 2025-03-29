@@ -1,5 +1,6 @@
 package com.draconicarcher.brewincompatdelight.items;
 
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Item.Properties;
@@ -12,6 +13,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import umpaz.brewinandchewin.common.item.BoozeItem;
 import umpaz.brewinandchewin.common.registry.BnCItems;
+import vectorwing.farmersdelight.common.FoodValues;
+
+import static vectorwing.farmersdelight.common.registry.ModItems.foodItem;
 
 @EventBusSubscriber(
         modid = "brewincompatdelight",
@@ -43,6 +47,8 @@ public class BCDItems {
     public static RegistryObject<Item> BOILERMAKER;
     public static RegistryObject<Item> TEQUILA_SUNRISE;
     public static RegistryObject<Item> KRAKEN_RUM;
+    public static RegistryObject<Item> JUNIPER_BERRIES;
+    public static RegistryObject<Item> SOY_WAX;
 
     public static void initialize() {
         WHITE_WINE = ITEMS.register("white_wine", () -> {
@@ -118,6 +124,13 @@ public class BCDItems {
         KRAKEN_RUM = ITEMS.register("kraken_rum", () -> {
             return new BoozeItem((Fluid)BCDFluids.KRAKEN_RUM.get(), (new Properties()).stacksTo(64).craftRemainder(BnCItems.TANKARD.get()).food(BCDFood.KRAKEN_RUM));
         });
+
+        JUNIPER_BERRIES = ITEMS.register("juniper_berries",
+                () -> new Item(new Item.Properties().food(BCDFood.JUNIPER_BERRIES)));
+
+        SOY_WAX = ITEMS.register("soy_wax",
+                () -> new Item(new Item.Properties()));
+
     }
 
     public static void register(IEventBus eventBus) {

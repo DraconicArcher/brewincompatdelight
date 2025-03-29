@@ -66,8 +66,8 @@ public class BCDFood {
     public static final FoodProperties HALF_AND_HALF = createConditionalFood(
             (new Builder())
                     .effect(() -> ModList.get().isLoaded("farmersrespite") ? new MobEffectInstance(FREffects.CAFFEINATED.get(), 600, 0) : new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600, 0), 1.0F)
-                    .effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), 600, 0), 1.0F)
-                    .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0), 1.0F)
+                    .effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), 3600, 0), 1.0F)
+                    .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 3600, 0), 1.0F)
                     .nutrition(3).saturationMod(1).alwaysEat(),
             "farmersdelight"
     );
@@ -98,6 +98,7 @@ public class BCDFood {
     }, 1.0F).effect(() -> {
         return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 2400, 0);
     }, 1.0F).alwaysEat().build();
+
     public static final FoodProperties NUT_BROWN_ALE = (new Builder()).effect(() -> {
         return new MobEffectInstance(BnCEffects.TIPSY.get(), 1200, 0);
     }, 1.0F).effect(() -> {
@@ -105,6 +106,7 @@ public class BCDFood {
     }, 1.0F).effect(() -> {
         return new MobEffectInstance(BnCEffects.INTOXICATION.get(), 600, 0);
     }, 1.0F).alwaysEat().build();
+
     public static final FoodProperties MULLED_WINE = createConditionalFood(
             (new Builder()).effect(() -> new MobEffectInstance(BnCEffects.TIPSY.get(), 2400, 0), 1.0F)
                     .effect(() -> new MobEffectInstance(BCDModEffects.ARROW_LOOTING.get(), 1200, 0), 1.0F)
@@ -204,6 +206,7 @@ public class BCDFood {
                     .nutrition(3).saturationMod(1).alwaysEat(),
             "collectorsreap"
     );
+    public static final FoodProperties JUNIPER_BERRIES = (new Builder()).nutrition(1).saturationMod(1).build();
 
     private static FoodProperties createConditionalFood(Builder builder, String... modids) {
         return new ConditionalFoodPropertiesBuilder(builder, modids).build();

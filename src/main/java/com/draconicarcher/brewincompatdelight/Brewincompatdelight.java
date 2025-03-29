@@ -6,6 +6,7 @@ import com.draconicarcher.brewincompatdelight.items.BCDFood;
 import com.draconicarcher.brewincompatdelight.items.BCDFluids;
 import com.draconicarcher.brewincompatdelight.items.BCDItems;
 import com.draconicarcher.brewincompatdelight.registries.BCDModEffects;
+import com.draconicarcher.brewincompatdelight.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -45,10 +46,12 @@ public class Brewincompatdelight {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, MODID);
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MODID);
 
-    private final IEventBus modEventBus;
 
     public Brewincompatdelight() {
-        this.modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModLootModifiers.register(modEventBus);
+
 
         BCDFluids.register(modEventBus);
         BCDModEffects.register(modEventBus);
@@ -108,6 +111,11 @@ public class Brewincompatdelight {
             addItemToTab(event, BCDItems.BOILERMAKER);
             addItemToTab(event, BCDItems.TEQUILA_SUNRISE);
             addItemToTab(event, BCDItems.KRAKEN_RUM);
+            addItemToTab(event, BCDItems.JUNIPER_BERRIES);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            addItemToTab(event, BCDItems.SOY_WAX);
         }
     }
 
@@ -116,6 +124,8 @@ public class Brewincompatdelight {
             event.accept(item.get());
         }
     }
+
+
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {

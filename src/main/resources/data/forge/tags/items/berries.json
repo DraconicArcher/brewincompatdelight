@@ -11,6 +11,10 @@
 	  {
 		  "id": "berries_and_cherries:strawberry",
 		  "required": false
+	  },
+	  {
+		  "id": "brewincompatdelight:juniper_berries",
+		  "required": false
 	  }
   ]
 }
