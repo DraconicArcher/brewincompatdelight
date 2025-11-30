@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "pamhc2foodcore:freshmilkitem",
+      "required": false},
+    {"id": "pamhc2foodextended:soymilkitem",
+      "required": false},
+    {
+      "id": "#c:milks",
+      "required": false
+    }
+  ]
+}

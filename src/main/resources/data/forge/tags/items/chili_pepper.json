@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "pamhc2crops:chilipepperitem",
+      "required": false},
+    {
+      "id": "croptopia:chile_pepper",
+      "required": false
+    },
+    {
+      "id": "peruviansdelight:aji_amarillo",
+      "required": false
+    },
+    {
+      "id": "extradelight:chili",
+      "required": false
+    },
+    {
+      "id": "vintagedelight:ghost_pepper",
+      "required": false
+    }
+  ]
+}

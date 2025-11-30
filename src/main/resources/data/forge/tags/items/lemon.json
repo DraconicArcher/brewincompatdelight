@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "pamhc2trees:lemonitem",
+      "required": false},
+    {"id": "fruitsdelight:lemon",
+      "required": false},
+    {
+      "id": "croptopia:lemon",
+      "required": false
+    },
+    {
+      "id": "extradelight:lemon",
+      "required": false
+    },
+    {
+      "id": "peruviansdelight:limon",
+      "required": false
+    },
+    {"id": "frootrees:lemon",
+      "required": false}
+  ]
+}

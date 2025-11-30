@@ -1,0 +1,13 @@
+{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+
+               {
+                  "item":"brewincompatdelight:red_grapes_crate"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:red_grapes",
+               "count":9
+            }
+         }

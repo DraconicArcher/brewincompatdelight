@@ -1,0 +1,38 @@
+{
+  "type":"forge:conditional",
+  "recipes":[
+    {
+      "conditions":[
+        {
+          "type":"forge:not",
+          "value":{
+            "type":"forge:tag_empty",
+            "tag":"forge:mint"
+          }
+        }
+      ],
+      "recipe":{
+        "type":"minecraft:crafting_shapeless",
+        "ingredients":[
+          {
+            "tag":"forge:mint"
+          },
+          {
+            "item":"brewincompatdelight:whiskey"
+          },
+
+          {
+            "item":"minecraft:sugar"
+          },
+          {
+            "item":"minecraft:glass_bottle"
+          }
+        ],
+        "result":{
+          "item":"brewincompatdelight:mint_julep",
+          "count":1
+        }
+      }
+    }
+  ]
+}

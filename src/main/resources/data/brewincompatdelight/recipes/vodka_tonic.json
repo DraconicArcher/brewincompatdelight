@@ -1,0 +1,21 @@
+{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "item":"brewinandchewin:vodka"
+               },
+               {
+                  "item":"brewincompatdelight:tonic_water"
+               },
+              {
+                "item":"brewinandchewin:tankard"
+              },
+              {
+                "item":"brewinandchewin:tankard"
+              }
+            ],
+            "result":{
+               "item":"brewincompatdelight:vodka_tonic",
+               "count":2
+            }
+         }

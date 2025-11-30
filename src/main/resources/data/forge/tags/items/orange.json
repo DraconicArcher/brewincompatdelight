@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "pamhc2trees:orangeitem",
+      "required": false},
+    {"id": "fruitsdelight:orange",
+      "required": false},
+    {"id": "croptopia:orange",
+      "required": false},
+    {
+      "id": "extradelight:orange",
+      "required": false
+    },
+    {"id": "frootrees:orange",
+      "required": false}
+  ]
+}

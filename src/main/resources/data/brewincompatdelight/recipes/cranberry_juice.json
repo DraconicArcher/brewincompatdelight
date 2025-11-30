@@ -1,0 +1,34 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:cranberry"
+               }
+            }
+         ],
+         "recipe":{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "tag":"forge:cranberry"
+               },
+               {
+                  "tag":"forge:cranberry"
+               },
+               {
+                  "item":"minecraft:glass_bottle"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:cranberry_juice",
+               "count":1
+            }
+         }
+      }
+   ]
+}

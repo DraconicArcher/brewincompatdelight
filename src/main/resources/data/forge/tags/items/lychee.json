@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "fruitsdelight:lychee",
+      "required": false},
+    {"id": "pamhc2trees:lycheeitem",
+      "required": false},
+    {"id": "pamhc2foodextended:lycheejuiceitem",
+      "required": false},
+    {"id": "frootrees:lychee",
+      "required": false}
+  ]
+}

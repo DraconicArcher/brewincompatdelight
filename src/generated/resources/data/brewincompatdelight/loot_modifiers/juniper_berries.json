@@ -1,0 +1,14 @@
+{
+  "type": "brewincompatdelight:add_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/spruce_leaves"
+    },
+    {
+      "chance": 0.1,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "brewincompatdelight:juniper_berries"
+}

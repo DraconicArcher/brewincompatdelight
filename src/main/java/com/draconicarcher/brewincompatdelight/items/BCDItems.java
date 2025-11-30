@@ -1,9 +1,13 @@
 package com.draconicarcher.brewincompatdelight.items;
 
+import com.draconicarcher.brewincompatdelight.blocks.BCDBlocks;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Item.Properties;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -48,7 +52,33 @@ public class BCDItems {
     public static RegistryObject<Item> TEQUILA_SUNRISE;
     public static RegistryObject<Item> KRAKEN_RUM;
     public static RegistryObject<Item> JUNIPER_BERRIES;
+    public static RegistryObject<Item> GIN;
+    public static RegistryObject<Item> BLUE_CURACAO;
+    public static RegistryObject<Item> TONIC_WATER;
+    public static RegistryObject<Item> GRENADINE;
+    public static RegistryObject<Item> WHISKEY_SOUR;
+    public static RegistryObject<Item> CHINA_BLUE;
+    public static RegistryObject<Item> SINGAPORE_SLING;
+    public static RegistryObject<Item> AQUA_VELVA;
+    public static RegistryObject<Item> GIN_AND_TONIC;
+    public static RegistryObject<Item> MERMAID_LEMONADE;
+    public static RegistryObject<Item> BEES_KNEES;
+    public static RegistryObject<Item> GIMLET;
+    public static RegistryObject<Item> BRASS_MONKEY;
+    public static RegistryObject<Item> VODKA_TONIC;
+    public static RegistryObject<Item> GIN_AND_JUICE;
     public static RegistryObject<Item> SOY_WAX;
+    public static RegistryObject<Item> JOHNNY_SILVERHAND;
+    public static RegistryObject<Item> MEDINA;
+    public static RegistryObject<Item> CRANBERRY_JUICE;
+    public static RegistryObject<Item> HOT_TODDY;
+    public static RegistryObject<Item> MULLED_CIDER;
+    public static RegistryObject<Item> MINT_JULEP;
+    public static RegistryObject<Item> BLACK_CUBAN;
+    public static RegistryObject<Item> RED_GRAPES;
+    public static RegistryObject<Item> WHITE_GRAPES;
+    public static RegistryObject<Item> WHITE_GRAPE_SEEDS;
+    public static RegistryObject<Item> RED_GRAPE_SEEDS;
 
     public static void initialize() {
         WHITE_WINE = ITEMS.register("white_wine", () -> {
@@ -82,7 +112,13 @@ public class BCDItems {
             return new BoozeItem((Fluid)BCDFluids.HARD_LEMONADE.get(), (new Properties()).stacksTo(64).craftRemainder(Items.GLASS_BOTTLE).food(BCDFood.HARD_LEMONADE));
         });
         RUM = ITEMS.register("rum", () -> {
-            return new BoozeItem((Fluid)BCDFluids.RUM.get(), (new Properties()).stacksTo(64).craftRemainder(Items.GLASS_BOTTLE).food(BCDFood.RUM));
+            return new BoozeItem((Fluid)BCDFluids.RUM.get(), (new Properties()).stacksTo(64).craftRemainder(BnCItems.TANKARD.get()).food(BCDFood.RUM));
+        });
+        GIN = ITEMS.register("gin", () -> {
+            return new BoozeItem((Fluid)BCDFluids.GIN.get(), (new Properties()).stacksTo(64).craftRemainder(Items.GLASS_BOTTLE).food(BCDFood.GIN));
+        });
+        BLUE_CURACAO = ITEMS.register("blue_curacao", () -> {
+            return new BoozeItem((Fluid)BCDFluids.BLUE_CURACAO.get(), (new Properties()).stacksTo(64).craftRemainder(Items.GLASS_BOTTLE).food(BCDFood.BLUE_CURACAO));
         });
         BLACK_RUSSIAN = ITEMS.register("black_russian", () -> {
             return new BCDDrinkableItemT((new Properties()).stacksTo(64).food(BCDFood.BLACK_RUSSIAN));
@@ -124,14 +160,94 @@ public class BCDItems {
         KRAKEN_RUM = ITEMS.register("kraken_rum", () -> {
             return new BoozeItem((Fluid)BCDFluids.KRAKEN_RUM.get(), (new Properties()).stacksTo(64).craftRemainder(BnCItems.TANKARD.get()).food(BCDFood.KRAKEN_RUM));
         });
+        WHISKEY_SOUR = ITEMS.register("whiskey_sour", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.WHISKEY_SOUR));
+        });
+        CHINA_BLUE = ITEMS.register("china_blue", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.CHINA_BLUE));
+        });
+        SINGAPORE_SLING = ITEMS.register("singapore_sling", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.SINGAPORE_SLING));
+        });
+        AQUA_VELVA = ITEMS.register("aqua_velva", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.AQUA_VELVA));
+        });
+        GIN_AND_TONIC = ITEMS.register("gin_and_tonic", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.GIN_AND_TONIC));
+        });
+        GIN_AND_JUICE = ITEMS.register("gin_and_juice", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.GIN_AND_JUICE));
+        });
+        MERMAID_LEMONADE = ITEMS.register("mermaid_lemonade", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.MERMAID_LEMONADE));
+        });
+        BEES_KNEES = ITEMS.register("bees_knees", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.BEES_KNEES));
+        });
+        GIMLET = ITEMS.register("gimlet", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.GIMLET));
+        });
+        BRASS_MONKEY = ITEMS.register("brass_monkey", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.BRASS_MONKEY));
+        });
+        VODKA_TONIC = ITEMS.register("vodka_tonic", () -> {
+            return new BCDDrinkableItemT((new Properties()).stacksTo(64).food(BCDFood.VODKA_TONIC));
+        });
+        JOHNNY_SILVERHAND = ITEMS.register("johnny_silverhand", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.JOHNNY_SILVERHAND));
+        });
+        CRANBERRY_JUICE = ITEMS.register("cranberry_juice", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.CRANBERRY_JUICE));
+        });
+        MEDINA = ITEMS.register("medina", () -> {
+            return new BCDDrinkableItemT((new Properties()).stacksTo(64).food(BCDFood.MEDINA));
+        });
+
+        HOT_TODDY = ITEMS.register("hot_toddy", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.HOT_TODDY));
+        });
+        MULLED_CIDER = ITEMS.register("mulled_cider", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.MULLED_CIDER));
+        });
+        MINT_JULEP = ITEMS.register("mint_julep", () -> {
+            return new BCDDrinkableItem((new Properties()).stacksTo(64).food(BCDFood.MINT_JULEP));
+        });
+        BLACK_CUBAN = ITEMS.register("black_cuban", () -> {
+            return new BCDDrinkableItemT((new Properties()).stacksTo(64).food(BCDFood.BLACK_CUBAN));
+        });
+
+
 
         JUNIPER_BERRIES = ITEMS.register("juniper_berries",
                 () -> new Item(new Item.Properties().food(BCDFood.JUNIPER_BERRIES)));
 
+        RED_GRAPES = ITEMS.register("red_grapes",
+                () -> new Item(new Item.Properties().food(BCDFood.RED_GRAPES)));
+
+        WHITE_GRAPES = ITEMS.register("white_grapes",
+                () -> new Item(new Item.Properties().food(BCDFood.WHITE_GRAPES)));
+
         SOY_WAX = ITEMS.register("soy_wax",
                 () -> new Item(new Item.Properties()));
 
+        TONIC_WATER = ITEMS.register("tonic_water",
+                () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE)));
+
+        GRENADINE = ITEMS.register("grenadine",
+                () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE)));
+
+        RED_GRAPE_SEEDS = ITEMS.register("red_grape_seeds",
+                () -> new ItemNameBlockItem(BCDBlocks.RED_GRAPE_CROP.get(), new Item.Properties()));
+
+        WHITE_GRAPE_SEEDS = ITEMS.register("white_grape_seeds",
+                () -> new ItemNameBlockItem(BCDBlocks.WHITE_GRAPE_CROP.get(), new Item.Properties()));
+
+
+
+
     }
+
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

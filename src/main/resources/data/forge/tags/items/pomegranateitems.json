@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#forge:seeds/pomegranate",
+      "required": false
+    },
+    {
+      "id": "pamhc2foodextended:pomegranatejuiceitem",
+      "required": false
+    },
+    {"id": "frootrees:pomegranate_juice",
+      "required": false}
+  ]
+}

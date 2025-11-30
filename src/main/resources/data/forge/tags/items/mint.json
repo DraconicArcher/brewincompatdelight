@@ -8,6 +8,10 @@
     {
       "id": "born_in_chaos_v1:river_mint",
       "required": false
+    },
+    {
+      "id": "extradelight:mint",
+      "required": false
     }
   ]
 }

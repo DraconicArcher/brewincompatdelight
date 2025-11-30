@@ -24,4 +24,24 @@ public class BCDEffectRegistry {
             System.out.println("Overdraw effect is not present!");
         }
     }
+
+    public static void applyExpBoostEffect(LivingEntity entity) {
+        if (BCDModEffects.EXP_BOOST.isPresent()) {
+            MobEffectInstance effectInstance = new MobEffectInstance(BCDModEffects.EXP_BOOST.get(), 200, 1);
+            entity.addEffect(effectInstance);
+        } else {
+            // Handle the case where the effect is not present
+            System.out.println("Wisdom effect is not present!");
+        }
+    }
+
+    public static void applyHurricaneEffect(LivingEntity entity) {
+        if (BCDModEffects.HURRICANE.isPresent()) {
+            MobEffectInstance effectInstance = new MobEffectInstance(BCDModEffects.HURRICANE.get(), 200, 1);
+            entity.addEffect(effectInstance);
+        } else {
+            // Handle the case where the effect is not present
+            System.out.println("Hurricane effect is not present!");
+        }
+    }
 }

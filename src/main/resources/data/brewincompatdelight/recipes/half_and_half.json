@@ -11,18 +11,27 @@
                }
             },
             {
-               "type": "forge:mod_loaded",
-               "modid": "fruitsdelight"
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:juices/lemon_juice"
+               }
             }
          ],
          "recipe":{
             "type":"minecraft:crafting_shapeless",
             "ingredients":[
                {
-                  "item":"fruitsdelight:lemon_juice"
+                  "tag":"forge:juices/lemon_juice"
                },
                {
                   "tag":"forge:tea"
+               },
+               {
+                  "item":"minecraft:glass_bottle"
+               },
+               {
+                  "item":"minecraft:glass_bottle"
                }
             ],
             "result":{

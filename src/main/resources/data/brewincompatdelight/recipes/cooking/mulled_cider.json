@@ -1,0 +1,33 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:mulling_spice"
+               }
+            }
+         ],
+         "recipe": {
+            "type": "farmersdelight:cooking",
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
+               {
+                  "tag": "forge:mulling_spice"
+               },
+               {
+                  "item": "brewincompatdelight:hard_cider"
+               }
+            ],
+            "recipe_book_tab": "misc",
+            "result": {
+               "item": "brewincompatdelight:mulled_cider"
+            }
+         }
+      }
+   ]
+}

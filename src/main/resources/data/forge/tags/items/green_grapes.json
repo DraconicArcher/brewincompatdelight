@@ -4,6 +4,16 @@
     {
       "id": "berries_and_cherries:green_grapes",
       "required": false
+    },
+    {
+      "id": "hearthandharvest:green_grapes",
+      "required": false
+    },
+    {"id": "pamhc2crops:greengrapeitem",
+      "required": false},
+    {
+      "id": "brewincompatdelight:white_grapes",
+      "required": false
     }
   ]
 }

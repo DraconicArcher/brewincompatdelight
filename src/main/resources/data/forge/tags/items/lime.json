@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "pamhc2trees:limeitem",
+      "required": false},
+    {
+      "id": "croptopia:lime",
+      "required": false
+    },
+    {
+      "id": "extradelight:lime",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:lime",
+      "required": false
+    },
+    {"id": "frootrees:lime",
+      "required": false}
+  ]
+}

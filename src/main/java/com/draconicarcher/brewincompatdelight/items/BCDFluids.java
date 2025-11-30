@@ -94,6 +94,16 @@ public class BCDFluids {
     public static RegistryObject<FlowingFluid> FLOWING_WHISKEY;
     public static Supplier<ForgeFlowingFluid.Properties> WHISKEY_FLUID_PROPERTIES;
 
+    public static RegistryObject<FluidType> GIN_FLUID_TYPE;
+    public static RegistryObject<FlowingFluid> GIN;
+    public static RegistryObject<FlowingFluid> FLOWING_GIN;
+    public static Supplier<ForgeFlowingFluid.Properties> GIN_FLUID_PROPERTIES;
+
+    public static RegistryObject<FluidType> BLUE_CURACAO_FLUID_TYPE;
+    public static RegistryObject<FlowingFluid> BLUE_CURACAO;
+    public static RegistryObject<FlowingFluid> FLOWING_BLUE_CURACAO;
+    public static Supplier<ForgeFlowingFluid.Properties> BLUE_CURACAO_FLUID_PROPERTIES;
+
 
     public static void register(IEventBus eventBus) {
             MOONSHINE_FLUID_TYPE = FLUID_TYPES.register("moonshine_type", () -> new AlcoholFluidType(-1573386));
@@ -162,7 +172,7 @@ public class BCDFluids {
         FLOWING_RUM = FLUIDS.register("flowing_rum", () -> new ForgeFlowingFluid.Flowing(RUM_FLUID_PROPERTIES.get()));
         RUM_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(RUM_FLUID_TYPE, RUM, FLOWING_RUM);
 
-        KRAKEN_RUM_FLUID_TYPE = FLUID_TYPES.register("kraken_rum_type", () -> new AlcoholFluidType(-100000));
+        KRAKEN_RUM_FLUID_TYPE = FLUID_TYPES.register("kraken_rum_type", () -> new AlcoholFluidType(-2525112));
         KRAKEN_RUM = FLUIDS.register("kraken_rum", () -> new ForgeFlowingFluid.Source(KRAKEN_RUM_FLUID_PROPERTIES.get()));
         FLOWING_KRAKEN_RUM = FLUIDS.register("flowing_kraken_rum", () -> new ForgeFlowingFluid.Flowing(KRAKEN_RUM_FLUID_PROPERTIES.get()));
         KRAKEN_RUM_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(KRAKEN_RUM_FLUID_TYPE, KRAKEN_RUM, FLOWING_KRAKEN_RUM);
@@ -171,6 +181,16 @@ public class BCDFluids {
         WHISKEY = FLUIDS.register("whiskey", () -> new ForgeFlowingFluid.Source(WHISKEY_FLUID_PROPERTIES.get()));
         FLOWING_WHISKEY = FLUIDS.register("flowing_whiskey", () -> new ForgeFlowingFluid.Flowing(WHISKEY_FLUID_PROPERTIES.get()));
         WHISKEY_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(WHISKEY_FLUID_TYPE, WHISKEY, FLOWING_WHISKEY);
+
+        GIN_FLUID_TYPE = FLUID_TYPES.register("gin_type", () -> new AlcoholFluidType(-14242));
+        GIN = FLUIDS.register("gin", () -> new ForgeFlowingFluid.Source(GIN_FLUID_PROPERTIES.get()));
+        FLOWING_GIN = FLUIDS.register("flowing_gin", () -> new ForgeFlowingFluid.Flowing(GIN_FLUID_PROPERTIES.get()));
+        GIN_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(GIN_FLUID_TYPE, GIN, FLOWING_GIN);
+
+        BLUE_CURACAO_FLUID_TYPE = FLUID_TYPES.register("blue_curacao_type", () -> new AlcoholFluidType(-65105225));
+        BLUE_CURACAO = FLUIDS.register("blue_curacao", () -> new ForgeFlowingFluid.Source(BLUE_CURACAO_FLUID_PROPERTIES.get()));
+        FLOWING_BLUE_CURACAO = FLUIDS.register("flowing_blue_curacao", () -> new ForgeFlowingFluid.Flowing(BLUE_CURACAO_FLUID_PROPERTIES.get()));
+        BLUE_CURACAO_FLUID_PROPERTIES = () -> new ForgeFlowingFluid.Properties(BLUE_CURACAO_FLUID_TYPE, BLUE_CURACAO, FLOWING_BLUE_CURACAO);
 
 
         FLUID_TYPES.register(eventBus);

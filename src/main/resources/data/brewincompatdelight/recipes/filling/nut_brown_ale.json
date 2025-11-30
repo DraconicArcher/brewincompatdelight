@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "brewinandchewin:tankard"
+    },
+    {
+      "amount": 250,
+      "fluid": "brewincompatdelight:nut_brown_ale"
+    }
+  ],
+  "results": [
+    {
+      "item": "brewincompatdelight:nut_brown_ale"
+    }
+  ]
+}

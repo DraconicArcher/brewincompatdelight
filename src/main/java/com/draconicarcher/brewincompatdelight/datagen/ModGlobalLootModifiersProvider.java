@@ -19,12 +19,11 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
+
         add("juniper_berries", new AddItemModifier(new LootItemCondition[] {
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SPRUCE_LEAVES).build(),
-                LootItemRandomChanceCondition.randomChance(0.025f).build()}, BCDItems.JUNIPER_BERRIES.get()));
-
-
-
+                LootTableIdCondition.builder(new ResourceLocation("minecraft", "blocks/spruce_leaves")).build(),
+                LootItemRandomChanceCondition.randomChance(0.1f).build()
+        }, BCDItems.JUNIPER_BERRIES.get()));
 
     }
 }

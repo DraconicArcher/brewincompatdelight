@@ -2,6 +2,8 @@ package com.draconicarcher.brewincompatdelight.registries;
 
 import com.draconicarcher.brewincompatdelight.Brewincompatdelight;
 import com.draconicarcher.brewincompatdelight.effects.ArrowLootingEffect;
+import com.draconicarcher.brewincompatdelight.effects.ExpBoostEffect;
+import com.draconicarcher.brewincompatdelight.effects.HurricaneEffect;
 import com.draconicarcher.brewincompatdelight.effects.ProjectileDamageEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,7 +21,13 @@ public class BCDModEffects {
     public static final RegistryObject<MobEffect> ARROW_LOOTING =
             MOB_EFFECTS.register("arrow_looting", ArrowLootingEffect::new);
 
+    public static final RegistryObject<MobEffect> EXP_BOOST = MOB_EFFECTS.register("wisdom", ExpBoostEffect::new);
+
+    public static final RegistryObject<MobEffect> HURRICANE = MOB_EFFECTS.register("hurricane", HurricaneEffect::new);
+
+
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);
     }
-}
+
+    }

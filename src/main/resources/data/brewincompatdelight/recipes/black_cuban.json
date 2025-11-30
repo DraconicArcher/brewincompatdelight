@@ -1,0 +1,45 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:coffee"
+               }
+            }
+         ],
+         "recipe":{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "tag":"forge:coffee"
+               },
+               {
+                  "item":"brewincompatdelight:rum"
+               },
+			   
+               {
+                  "tag":"forge:milk"
+               },
+               {
+                  "item":"brewinandchewin:tankard"
+               },
+               {
+                  "item":"brewinandchewin:tankard"
+               },
+               {
+                  "item":"brewinandchewin:tankard"
+               }
+			  
+            ],
+            "result":{
+               "item":"brewincompatdelight:black_cuban",
+               "count":3
+            }
+         }
+      }
+   ]
+}

@@ -29,6 +29,12 @@
           },
           {
             "tag":"forge:fruits/lime"
+          },
+          {
+            "item":"minecraft:glass_bottle"
+          },
+          {
+            "item":"minecraft:glass_bottle"
           }
         ],
         "result":{
