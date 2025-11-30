@@ -12,6 +12,16 @@
 	{
       "id": "farmersrespite:long_coffee",
       "required": false
+    },
+    {"id": "rusticdelight:coffee",
+      "required": false},
+    {"id": "rusticdelight:dark_coffee",
+      "required": false},
+    {"id": "croptopia:coffee",
+      "required": false},
+    {
+      "id": "extradelight:coffee",
+      "required": false
     }
   ]
 }

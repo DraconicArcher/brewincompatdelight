@@ -20,6 +20,10 @@
     {
       "id": "culturaldelights:raw_calamari",
       "required": false
+    },
+    {
+      "id": "peruviansdelight:tentaculo_pota",
+      "required": false
     }
   ]
 }

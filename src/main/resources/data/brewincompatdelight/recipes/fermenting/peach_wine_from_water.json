@@ -7,7 +7,7 @@
                "type":"forge:not",
                "value":{
                   "type":"forge:tag_empty",
-                  "tag":"forge:fruits/peach"
+                  "tag":"forge:peach"
                }
             }
          ],
@@ -21,10 +21,10 @@
             "fermentingtime":9600,
             "ingredients":[
                {
-                  "tag":"forge:fruits/peach"
+                  "tag":"forge:peach"
                },
                {
-                  "tag":"forge:fruits/peach"
+                  "tag":"forge:peach"
                },
                {
                   "item":"minecraft:sugar"

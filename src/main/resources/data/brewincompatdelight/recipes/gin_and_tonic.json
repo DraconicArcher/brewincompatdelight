@@ -1,0 +1,21 @@
+{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "item":"brewincompatdelight:tonic_water"
+               },
+               {
+                  "item":"brewincompatdelight:gin"
+               },
+              {
+                "item":"minecraft:glass_bottle"
+              },
+              {
+                "item":"minecraft:glass_bottle"
+              }
+            ],
+            "result":{
+               "item":"brewincompatdelight:gin_and_tonic",
+               "count":2
+            }
+         }

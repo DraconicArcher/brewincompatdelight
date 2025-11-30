@@ -1,0 +1,13 @@
+{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+
+               {
+                  "item":"brewincompatdelight:juniper_berries_crate"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:juniper_berries",
+               "count":9
+            }
+         }

@@ -15,6 +15,9 @@
          "tag":"forge:berries"
       },
       {
+         "tag":"forge:berries"
+      },
+      {
          "item": "minecraft:sugar"
       }
    ],

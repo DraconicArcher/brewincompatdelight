@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "festive_delight:cinnamon_powder",
+      "required": false
+    },
+    {
+      "id": "aromatic:dried_cinnamon",
+      "required": false
+    },
+    {"id": "pamhc2foodextended:groundcinnamonitem",
+      "required": false},
+    {"id": "pamhc2foodextended:groundnutmegitem",
+      "required": false},
+    {"id": "croptopia:nutmeg",
+      "required": false},
+    {"id": "croptopia:cinnamon",
+      "required": false},
+    {"id": "expandeddelight:cinnamon",
+      "required": false},
+    {
+      "id": "extradelight:ground_cinnamon",
+      "required": false
+    }
+  ]
+}

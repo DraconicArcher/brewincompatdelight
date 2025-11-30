@@ -4,6 +4,20 @@
     {
       "id": "berries_and_cherries:black_grapes",
       "required": false
+    },
+    {
+      "id": "hearthandharvest:red_grapes",
+      "required": false
+    },
+    {
+      "id": "brewincompatdelight:red_grapes",
+      "required": false
+    },
+    {"id": "pamhc2crops:grapeitem",
+      "required": false},
+    {
+      "id": "croptopia:grapes",
+      "required": false
     }
   ]
 }

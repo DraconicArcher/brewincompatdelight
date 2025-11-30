@@ -9,6 +9,13 @@
             "type":"forge:tag_empty",
             "tag":"forge:fruits/lime"
           }
+        },
+        {
+          "type":"forge:not",
+          "value":{
+            "type":"forge:tag_empty",
+            "tag":"forge:salt"
+          }
         }
       ],
       "recipe":{
@@ -25,6 +32,9 @@
           },
           {
             "tag":"forge:salt"
+          },
+          {
+            "item":"minecraft:glass_bottle"
           }
         ],
         "result":{

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "fruitsdelight:lemon_juice",
+      "required": false
+    },
+    {
+      "id": "fruitsdelight:orange_juice",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:limeade",
+      "required": false
+    }
+  ]
+}

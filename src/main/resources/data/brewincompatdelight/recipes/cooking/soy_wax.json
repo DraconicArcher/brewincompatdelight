@@ -7,8 +7,11 @@
     {
       "conditions":[
         {
-          "type": "forge:mod_loaded",
-          "modid": "vegandelight"
+          "type":"forge:not",
+          "value":{
+            "type":"forge:tag_empty",
+            "tag":"forge:crops/soybean"
+          }
         }
       ],
       "recipe":{
@@ -17,19 +20,19 @@
         "experience": 1.0,
         "ingredients": [
           {
-            "item": "vegandelight:soybean"
+            "tag":"forge:crops/soybean"
           },
           {
-            "item": "vegandelight:soybean"
+            "tag":"forge:crops/soybean"
           },
           {
-            "item": "vegandelight:soybean"
+            "tag":"forge:crops/soybean"
           },
           {
             "tag": "forge:mushrooms"
           }
         ],
-        "recipe_book_tab": "meals",
+        "recipe_book_tab": "misc",
         "result": {
           "item": "brewincompatdelight:soy_wax"
         }

@@ -1,0 +1,39 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:seeds/pomegranate"
+               }
+            }
+         ],
+         "recipe": {
+            "type": "farmersdelight:cooking",
+            "cookingtime": 200,
+            "experience": 1.0,
+            "ingredients": [
+               {
+                  "tag": "forge:seeds/pomegranate"
+               },
+               {
+                  "tag": "forge:seeds/pomegranate"
+               },
+               {
+                  "tag": "forge:berries"
+               },
+               {
+                  "item": "minecraft:sugar"
+               }
+            ],
+            "recipe_book_tab": "misc",
+            "result": {
+               "item": "brewincompatdelight:grenadine"
+            }
+         }
+      }
+   ]
+}

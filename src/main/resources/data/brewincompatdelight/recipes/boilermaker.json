@@ -5,11 +5,17 @@
                   "item":"brewinandchewin:beer"
                },
                {
-                  "item":"wrewincompatdelight:whiskey"
-               }
+                  "item":"brewincompatdelight:whiskey"
+               },
+              {
+                "item":"brewinandchewin:tankard"
+              },
+              {
+                "item":"brewinandchewin:tankard"
+              }
             ],
             "result":{
-               "item":"brewincompatdelight:half_and_half",
+               "item":"brewincompatdelight:boilermaker",
                "count":2
             }
          }

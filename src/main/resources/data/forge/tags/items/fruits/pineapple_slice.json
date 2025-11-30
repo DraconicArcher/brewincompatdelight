@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "fruitsdelight:pineapple_slice",
+      "required": false
+    }
+  ]
+}

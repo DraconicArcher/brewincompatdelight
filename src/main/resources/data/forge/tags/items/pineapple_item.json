@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "fruitsdelight:pineapple_slice",
+      "required": false
+    },
+    {
+      "id": "pamhc2foodextended:pineapplejuiceitem",
+      "required": false
+    },
+    {
+      "id": "croptopia:pineapple_juice",
+      "required": false
+    }
+  ]
+}

@@ -4,8 +4,11 @@
       {
          "conditions":[
             {
-               "type": "forge:mod_loaded",
-				"modid": "fruitsdelight"
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:juices/orange_juice"
+               }
             }
          ],
          "recipe":{
@@ -15,7 +18,13 @@
                   "item":"brewinandchewin:vodka"
                },
                {
-                  "item":"fruitsdelight:orange_juice"
+                  "tag":"forge:juices/orange_juice"
+               },
+               {
+                  "item":"minecraft:glass_bottle"
+               },
+               {
+                  "item":"minecraft:glass_bottle"
                }
             ],
             "result":{

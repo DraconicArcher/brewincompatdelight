@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "brewincompatdelight:cranberry_juice",
+      "required": false
+    }
+  ]
+}

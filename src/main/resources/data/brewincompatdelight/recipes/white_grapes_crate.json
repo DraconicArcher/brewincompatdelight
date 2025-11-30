@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "h": {
+      "item": "brewincompatdelight:white_grapes"
+    }
+  },
+  "pattern": [
+    "hhh",
+    "hhh",
+    "hhh"
+  ],
+  "result": {
+    "item": "brewincompatdelight:white_grapes_crate"
+  },
+  "show_notification": true
+}

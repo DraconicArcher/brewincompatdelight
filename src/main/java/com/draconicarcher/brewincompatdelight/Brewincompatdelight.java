@@ -2,6 +2,9 @@
 package com.draconicarcher.brewincompatdelight;
 
 import com.draconicarcher.brewincompatdelight.blocks.BCDBlocks;
+import com.draconicarcher.brewincompatdelight.events.ExpBoostHandler;
+import com.draconicarcher.brewincompatdelight.events.HurricaneHandler;
+import com.draconicarcher.brewincompatdelight.integration.ThirstWasTakenIntegration;
 import com.draconicarcher.brewincompatdelight.items.BCDFood;
 import com.draconicarcher.brewincompatdelight.items.BCDFluids;
 import com.draconicarcher.brewincompatdelight.items.BCDItems;
@@ -17,12 +20,14 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -52,33 +57,50 @@ public class Brewincompatdelight {
 
         ModLootModifiers.register(modEventBus);
 
+        MinecraftForge.EVENT_BUS.register(new ExpBoostHandler());
+
+        MinecraftForge.EVENT_BUS.register(new HurricaneHandler());
+
+
+
+
 
         BCDFluids.register(modEventBus);
         BCDModEffects.register(modEventBus);
 
-        ITEMS.register(modEventBus);
-        BCDItems.register(modEventBus);
-        BLOCKS.register(modEventBus);
         BCDBlocks.register(modEventBus);
+
+        BCDItems.initialize();
+        BCDItems.register(modEventBus);
+
 
         CREATIVE_MODE_TABS.register(modEventBus);
         RECIPE_TYPES.register(modEventBus);
         SERIALIZERS.register(modEventBus);
 
-        BCDItems.initialize();
+
         BCDFood.initialize();
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        if (ModList.get().isLoaded("thirst")) {
+            MinecraftForge.EVENT_BUS.register(ThirstWasTakenIntegration.class);
+        }
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
-
         LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+        event.enqueueWork(() -> {
+            ComposterBlock.COMPOSTABLES.put(BCDItems.JUNIPER_BERRIES.get(), 0.3F);
+            ComposterBlock.COMPOSTABLES.put(BCDItems.RED_GRAPES.get(), 0.3F);
+            ComposterBlock.COMPOSTABLES.put(BCDItems.WHITE_GRAPES.get(), 0.3F);
+            ComposterBlock.COMPOSTABLES.put(BCDItems.RED_GRAPE_SEEDS.get(), 0.3F);
+            ComposterBlock.COMPOSTABLES.put(BCDItems.WHITE_GRAPE_SEEDS.get(), 0.3F);
+        });
 
         if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
@@ -112,10 +134,37 @@ public class Brewincompatdelight {
             addItemToTab(event, BCDItems.TEQUILA_SUNRISE);
             addItemToTab(event, BCDItems.KRAKEN_RUM);
             addItemToTab(event, BCDItems.JUNIPER_BERRIES);
+            addItemToTab(event, BCDItems.GIN);
+            addItemToTab(event, BCDItems.BLUE_CURACAO);
+            addItemToTab(event, BCDItems.TONIC_WATER);
+            addItemToTab(event, BCDItems.GRENADINE);
+            addItemToTab(event, BCDItems.WHISKEY_SOUR);
+            addItemToTab(event, BCDItems.CHINA_BLUE);
+            addItemToTab(event, BCDItems.SINGAPORE_SLING);
+            addItemToTab(event, BCDItems.AQUA_VELVA);
+            addItemToTab(event, BCDItems.GIN_AND_TONIC);
+            addItemToTab(event, BCDItems.MERMAID_LEMONADE);
+            addItemToTab(event, BCDItems.BEES_KNEES);
+            addItemToTab(event, BCDItems.GIMLET);
+            addItemToTab(event, BCDItems.BRASS_MONKEY);
+            addItemToTab(event, BCDItems.VODKA_TONIC);
+            addItemToTab(event, BCDItems.GIN_AND_JUICE);
+            addItemToTab(event, BCDItems.JOHNNY_SILVERHAND);
+            addItemToTab(event, BCDItems.MEDINA);
+            addItemToTab(event, BCDItems.RED_GRAPE_SEEDS);
+            addItemToTab(event, BCDItems.WHITE_GRAPE_SEEDS);
+            addItemToTab(event, BCDItems.RED_GRAPES);
+            addItemToTab(event, BCDItems.WHITE_GRAPES);
         }
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             addItemToTab(event, BCDItems.SOY_WAX);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(BCDBlocks.JUNIPER_BERRIES_CRATE.get().asItem());
+            event.accept(BCDBlocks.RED_GRAPES_CRATE.get().asItem());
+            event.accept(BCDBlocks.WHITE_GRAPES_CRATE.get().asItem());
         }
     }
 
@@ -124,7 +173,6 @@ public class Brewincompatdelight {
             event.accept(item.get());
         }
     }
-
 
 
     @SubscribeEvent
@@ -141,4 +189,6 @@ public class Brewincompatdelight {
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
+
+
 }

@@ -38,8 +38,8 @@ public class BCDDrinkableItem extends DrinkableItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(stack, level, tooltip, flag); // KEEP THIS LINE
+        super.appendHoverText(stack, level, tooltip, flag);
 
-        TooltipUtil.appendDrinkTooltip(stack, level, tooltip, flag); // Correct call to the static method
+        TooltipUtil.appendDrinkTooltip(stack, level, tooltip, flag);
     }
 }

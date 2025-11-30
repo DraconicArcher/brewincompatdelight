@@ -23,12 +23,21 @@
 			   
                {
                   "tag":"forge:milk"
+               },
+               {
+                  "item":"brewinandchewin:tankard"
+               },
+               {
+                  "item":"brewinandchewin:tankard"
+               },
+               {
+                  "item":"brewinandchewin:tankard"
                }
 			  
             ],
             "result":{
                "item":"brewincompatdelight:white_russian",
-               "count":2
+               "count":3
             }
          }
       }

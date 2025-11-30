@@ -4,6 +4,18 @@
     {
       "id": "ecologics:coconut_slice",
       "required": false
+    },
+    {
+      "id": "pamhc2trees:coconutitem",
+      "required": false
+    },
+    {
+      "id": "croptopia:coconut",
+      "required": false
+    },
+    {
+      "id": "crabbersdelight:coconut_halve",
+      "required": false
     }
   ]
 }

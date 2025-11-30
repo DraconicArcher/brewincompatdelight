@@ -1,0 +1,37 @@
+{
+   "type":"forge:conditional",
+   "recipes":[
+      {
+         "conditions":[
+            {
+               "type":"forge:not",
+               "value":{
+                  "type":"forge:tag_empty",
+                  "tag":"forge:juices/citrus_juice"
+               }
+            }
+         ],
+         "recipe":{
+            "type":"minecraft:crafting_shapeless",
+            "ingredients":[
+               {
+                  "tag":"forge:juices/citrus_juice"
+               },
+               {
+                  "item":"brewincompatdelight:gin"
+               },
+               {
+                  "item":"minecraft:glass_bottle"
+               },
+               {
+                  "item":"minecraft:glass_bottle"
+               }
+            ],
+            "result":{
+               "item":"brewincompatdelight:gin_and_juice",
+               "count":2
+            }
+         }
+      }
+   ]
+}

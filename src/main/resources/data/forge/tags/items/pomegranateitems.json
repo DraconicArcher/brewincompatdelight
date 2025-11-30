@@ -2,11 +2,11 @@
   "replace": false,
   "values": [
     {
-      "id": "festive_delight:cinnamon_powder",
+      "id": "#forge:seeds/pomegranate",
       "required": false
     },
     {
-      "id": "aromatic:dried_cinnamon",
+      "id": "pamhc2foodextended:pomegranatejuiceitem",
       "required": false
     }
   ]

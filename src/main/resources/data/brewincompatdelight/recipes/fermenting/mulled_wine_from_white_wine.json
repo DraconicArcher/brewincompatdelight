@@ -7,7 +7,7 @@
                "type":"forge:not",
                "value":{
                   "type":"forge:tag_empty",
-                  "tag":"forge:cinnamon"
+                  "tag":"forge:mulling_spice"
                }
             }
          ],
@@ -27,7 +27,7 @@
                   "tag":"forge:berries"
                },
                {
-                  "tag":"forge:cinnamon"
+                  "tag":"forge:mulling_spice"
                },
                {
                   "tag":"forge:seeds"
